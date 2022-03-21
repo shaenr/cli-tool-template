@@ -5,11 +5,6 @@ from argparse import (
     ArgumentParser,
     RawDescriptionHelpFormatter
 )
-from pathlib import Path
-
-
-def set_log_level(ns: Namespace):
-    return ns.verbose - ns.quiet
 
 
 def get_argv():
@@ -24,9 +19,9 @@ def get_argv():
                         help="Optionally Read this File")
 
     verbosity_group = parser.add_mutually_exclusive_group(required=False)
-    verbosity_group.add_argument("-v", "--verbose", default=1, action="count",
+    verbosity_group.add_argument("-v", "--verbose", default=2, action="count",
                                  help="increase logging level.")
-    verbosity_group.add_argument("-q", "--quiet", default=0, action="count",
+    verbosity_group.add_argument("-q", "--quiet", default=1, action="count",
                                  help="decrease logging level.")
 
     parser.add_argument("--on", action="store_true",
